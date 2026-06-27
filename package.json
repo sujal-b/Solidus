@@ -1,0 +1,70 @@
+{
+  "name": "solidus",
+  "version": "0.1.0",
+  "description": "Declarative flaky-test detection & quarantine. Statistical, zero-config, CI-native.",
+  "type": "module",
+  "bin": {
+    "solidus": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core/*": {
+      "types": "./dist/core/*.d.ts",
+      "import": "./dist/core/*.js"
+    },
+    "./ci/*": {
+      "types": "./dist/ci/*.d.ts",
+      "import": "./dist/ci/*.js"
+    },
+    "./plugins/*": {
+      "types": "./dist/plugins/*.d.ts",
+      "import": "./dist/plugins/*.js"
+    },
+    "./parsers/*": {
+      "types": "./dist/parsers/*.d.ts",
+      "import": "./dist/parsers/*.js"
+    },
+    "./quarantine": {
+      "types": "./dist/quarantine.d.ts",
+      "import": "./dist/quarantine.js"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist .solidus",
+    "test": "node --experimental-vm-modules node_modules/.bin/uvu test",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "flaky",
+    "test",
+    "ci",
+    "testing",
+    "qa",
+    "flake-detector",
+    "quarantine"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solidus/solidus"
+  },
+  "funding": "https://github.com/sponsors/solidus",
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0"
+  }
+}
