@@ -1,0 +1,94 @@
+name: solidus
+description: |
+  Detect flaky tests in CI. Runs solidus analyze with GitHub annotations.
+  Inputs:
+    results-file: Path to test results JSON (default: test-results.json)
+    db-path: History DB path (default: .solidus/history.db)
+    window: Number of recent runs (default: 10)
+    min-runs: Min runs before classification (default: 3)
+    fail-on-flaky: Exit 1 if flaky tests found (default: false)
+    auto-quarantine: Auto-mark flaky tests (default: false)
+
+inputs:
+  results-file:
+    description: Path to test results JSON file
+    required: false
+    default: test-results.json
+  db-path:
+    description: History DB path
+    required: false
+    default: .solidus/history.db
+  window:
+    description: Number of recent runs to consider
+    required: false
+    default: "10"
+  min-runs:
+    description: Minimum runs before classification
+    required: false
+    default: "3"
+  fail-on-flaky:
+    description: Exit with error if flaky tests found
+    required: false
+    default: "false"
+  auto-quarantine:
+    description: Auto-quarantine flaky tests
+    required: false
+    default: "false"
+
+outputs:
+  flaky-count:
+    description: Number of flaky tests detected
+  stable-count:
+    description: Number of stable tests
+  broken-count:
+    description: Number of consistently failing tests
+  quarantined-count:
+    description: Number of quarantined tests
+  report:
+    description: Full report as JSON string
+
+runs:
+  using: composite
+  steps:
+    - name: Validate results file
+      shell: bash
+      run: |
+        if [ ! -f "${{ inputs.results-file }}" ]; then
+          echo "::error::solidus results file not found: ${{ inputs.results-file }}"
+          exit 1
+        fi
+
+    - name: Run solidus analyze
+      shell: bash
+      id: solidus
+      env:
+        SOLIDUS_DB_PATH: ${{ inputs.db-path }}
+        SOLIDUS_WINDOW: ${{ inputs.window }}
+        SOLIDUS_MIN_RUNS: ${{ inputs.min-runs }}
+        SOLIDUS_LOG_LEVEL: info
+      run: |
+        npx -y solidus@latest analyze \
+          -i "${{ inputs.results-file }}" \
+          --db-path "${{ inputs.db-path }}" \
+          --window "${{ inputs.window }}" \
+          --min-runs "${{ inputs.min-runs }}" \
+          --github \
+          --json 2>&1 | tee solidus-output.tmp
+
+        # Parse JSON output for step outputs
+        if [ -f .solidus/latest-report.json ]; then
+          echo "flaky-count=$(jq -r '.flaky' .solidus/latest-report.json)" >> "$GITHUB_OUTPUT"
+          echo "stable-count=$(jq -r '.stable' .solidus/latest-report.json)" >> "$GITHUB_OUTPUT"
+          echo "broken-count=$(jq -r '.broken' .solidus/latest-report.json)" >> "$GITHUB_OUTPUT"
+          echo "quarantined-count=$(jq -r '.quarantined' .solidus/latest-report.json)" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Fail on flaky
+      shell: bash
+      if: inputs.fail-on-flaky == 'true'
+      run: |
+        FLAKY=$(jq -r '.flaky' .solidus/latest-report.json 2>/dev/null || echo 0)
+        if [ "$FLAKY" -gt 0 ]; then
+          echo "::error::solidus: $FLAKY flaky tests found"
+          exit 1
+        fi

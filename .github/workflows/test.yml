@@ -1,0 +1,25 @@
+name: test
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm run build
+      - run: node --test test/*.test.mjs
+        env:
+          NO_COLOR: 1
+      - run: node test/seed-data.mjs
+      - run: node dist/index.js analyze -i test/new-run.json --json
+      - run: node dist/index.js report
+      - run: node dist/index.js status
+      - run: node dist/index.js clear
