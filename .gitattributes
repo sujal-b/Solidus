@@ -1,0 +1,8 @@
+# Normalize line endings to LF in the repo
+* text=auto eol=lf
+
+# Batch files should keep CRLF
+*.bat text eol=crlf
+
+# Lock files are binary
+package-lock.json -text
