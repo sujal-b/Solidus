@@ -1,5 +1,5 @@
 {
-  "name": "solidus",
+  "name": "solidus-cli",
   "version": "0.1.0",
   "description": "Declarative flaky-test detection & quarantine. Statistical, zero-config, CI-native.",
   "type": "module",
@@ -52,8 +52,10 @@
     "testing",
     "qa",
     "flake-detector",
-    "quarantine"
+    "quarantine",
+    "solidus-cli"
   ],
+  "homepage": "https://github.com/sujal-b/Solidus",
   "license": "MIT",
   "repository": {
     "type": "git",

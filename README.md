@@ -8,9 +8,9 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/sujal-b/Solidus?style=flat&colorA=18181B&colorB=6366f1" alt="MIT license" /></a>
-  <a href="package.json"><img src="https://img.shields.io/node/v/solidus.svg?style=flat&colorA=18181B&colorB=6366f1" alt="Node version" /></a>
+  <a href="package.json"><img src="https://img.shields.io/node/v/solidus-cli?style=flat&colorA=18181B&colorB=6366f1" alt="Node version" /></a>
   <a href="https://github.com/sujal-b/Solidus/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/sujal-b/Solidus/test.yml?style=flat&colorA=18181B&colorB=6366f1&label=CI" alt="CI status" /></a>
-  <img src="https://img.shields.io/badge/npm-pending-6366f1?style=flat&colorA=18181B" alt="npm" />
+  <a href="https://www.npmjs.com/package/solidus-cli"><img src="https://img.shields.io/npm/v/solidus-cli?style=flat&colorA=18181B&colorB=6366f1" alt="npm version" /></a>
 </p>
 
 <br/>
@@ -41,7 +41,7 @@
 
 ```bash
 # Install globally (or use via npx)
-npm install -g solidus
+npm install -g solidus-cli
 
 # Initialize the .solidus/ directory
 solidus init
@@ -305,7 +305,7 @@ Defaults         (sensible built-in values)
 
 ```yaml
 - run: npm test -- --json --outputFile=results.json
-- run: npx solidus analyze -i results.json --github
+- run: npx solidus-cli analyze -i results.json --github
   env:
     SOLIDUS_WINDOW: 15
     SOLIDUS_SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

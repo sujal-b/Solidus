@@ -67,7 +67,7 @@ runs:
         SOLIDUS_MIN_RUNS: ${{ inputs.min-runs }}
         SOLIDUS_LOG_LEVEL: info
       run: |
-        npx -y solidus@latest analyze \
+        npx -y solidus-cli@latest analyze \
           -i "${{ inputs.results-file }}" \
           --db-path "${{ inputs.db-path }}" \
           --window "${{ inputs.window }}" \
