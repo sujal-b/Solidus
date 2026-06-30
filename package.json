@@ -57,9 +57,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/solidus/solidus"
+    "url": "https://github.com/sujal-b/Solidus"
   },
-  "funding": "https://github.com/sponsors/solidus",
+  "funding": "https://github.com/sponsors/sujal-b",
   "dependencies": {
     "commander": "^12.0.0"
   },

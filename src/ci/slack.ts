@@ -98,7 +98,7 @@ function buildSlackBlocks(report: AnalysisReport): unknown[] {
   // Machine-readable JSON in hidden section for potential automation
   blocks.push({
     type: "context",
-    elements: [{ type: "mrkdwn", text: `solidus ${report.runId} · <https://github.com/solidus/solidus|solidus>` }],
+    elements: [{ type: "mrkdwn", text: `solidus ${report.runId} · <https://github.com/sujal-b/Solidus|solidus>` }],
   });
 
   return blocks;

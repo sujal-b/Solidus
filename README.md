@@ -7,11 +7,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/solidus"><img src="https://img.shields.io/npm/v/solidus.svg?style=flat&colorA=18181B&colorB=6366f1" alt="npm version" /></a>
-  <a href="https://www.npmjs.com/package/solidus"><img src="https://img.shields.io/npm/dm/solidus.svg?style=flat&colorA=18181B&colorB=6366f1" alt="npm downloads" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/npm/l/solidus.svg?style=flat&colorA=18181B&colorB=6366f1" alt="MIT license" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/sujal-b/Solidus?style=flat&colorA=18181B&colorB=6366f1" alt="MIT license" /></a>
   <a href="package.json"><img src="https://img.shields.io/node/v/solidus.svg?style=flat&colorA=18181B&colorB=6366f1" alt="Node version" /></a>
-  <a href="https://github.com/solidus/solidus/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/solidus/solidus/test.yml?style=flat&colorA=18181B&colorB=6366f1&label=CI" alt="CI status" /></a>
+  <a href="https://github.com/sujal-b/Solidus/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/sujal-b/Solidus/test.yml?style=flat&colorA=18181B&colorB=6366f1&label=CI" alt="CI status" /></a>
+  <img src="https://img.shields.io/badge/npm-pending-6366f1?style=flat&colorA=18181B" alt="npm" />
 </p>
 
 <br/>
