@@ -1,0 +1,12 @@
+{
+  "id": "test_run_001",
+  "timestamp": "2026-06-30T10:00:00Z",
+  "commit": "abc123",
+  "branch": "main",
+  "results": [
+    { "name": "Login renders form", "file": "src/Login.test.tsx", "status": "pass", "durationMs": 12 },
+    { "name": "Login submits", "file": "src/Login.test.tsx", "status": "pass", "durationMs": 34 },
+    { "name": "Dashboard loads data", "file": "src/Dashboard.test.tsx", "status": "fail", "durationMs": 156, "error": "Timeout" },
+    { "name": "Nav shows links", "file": "src/Nav.test.tsx", "status": "pass", "durationMs": 8 }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "run_ci_042",
+  "timestamp": "2026-06-30T14:00:00Z",
+  "commit": "abc042",
+  "branch": "main",
+  "ciRunId": "ci-98765",
+  "results": [
+    { "name": "Login renders form", "file": "src/Login.test.tsx", "status": "pass", "durationMs": 11 },
+    { "name": "Login submits", "file": "src/Login.test.tsx", "status": "pass", "durationMs": 29 },
+    { "name": "Dashboard loads data", "file": "src/Dashboard.test.tsx", "status": "fail", "durationMs": 201, "error": "Timeout" },
+    { "name": "Nav shows links", "file": "src/Nav.test.tsx", "status": "pass", "durationMs": 7 },
+    { "name": "Payment processes", "file": "src/Payment.test.tsx", "status": "pass", "durationMs": 98 },
+    { "name": "Search returns results", "file": "src/Search.test.tsx", "status": "pass", "durationMs": 15 }
+  ]
+}
