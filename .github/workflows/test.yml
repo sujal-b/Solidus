@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm ci
       - run: npm run build
-      - run: node --test test/*.test.mjs
+      - run: node --test test/config.test.mjs test/detector.test.mjs test/history.test.mjs test/junit-parser.test.mjs test/reporters.test.mjs test/stress.test.mjs
         env:
           NO_COLOR: 1
       - run: node test/seed-data.mjs
